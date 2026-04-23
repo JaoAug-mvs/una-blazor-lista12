@@ -1,0 +1,45 @@
+<div class="activity-card @(MetaAlcancada ? "goal-reached" : "")">
+    <h3>@Title</h3>
+    
+    <p class="points-info">
+        Pontos por ação: <strong>@PointsPerAction</strong>
+    </p>
+    
+    <p class="total-info">Total acumulado:</p>
+    <span class="badge @(MetaAlcancada ? "badge-success" : "badge-primary")">
+        @TotalAccumulated
+    </span>
+    
+    <button class="btn btn-outline" @onclick="RegistrarAtividade">
+        Registrar Atividade
+    </button>
+
+    @if (MetaAlcancada)
+    {
+        <div class="achievement-message">
+            ⏳ Meta batida!<br />
+            Você é um Herói do Planeta!
+        </div>
+    }
+</div>
+
+@code {
+    // [Parameter] permite que a Home passe os valores para este componente
+    [Parameter] 
+    public string Title { get; set; } = string.Empty;
+    
+    [Parameter] 
+    public int PointsPerAction { get; set; }
+
+    // Variável de estado que guarda o total acumulado
+    private int TotalAccumulated { get; set; } = 0;
+
+    // Propriedade computada para verificar se a meta de 100 pontos foi atingida
+    private bool MetaAlcancada => TotalAccumulated >= 100;
+
+    // Método disparado ao clicar no botão
+    private void RegistrarAtividade()
+    {
+        TotalAccumulated += PointsPerAction;
+    }
+}

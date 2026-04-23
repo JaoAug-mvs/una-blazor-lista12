@@ -1,0 +1,16 @@
+﻿@page "/"
+@* O rendermode é essencial no .NET 8 para que os botões funcionem (interatividade) *@
+@rendermode InteractiveServer
+
+<PageTitle>Home</PageTitle>
+
+<div class="header-container text-center my-4">
+    <h1>🌍 EcoMonitor</h1>
+    <p>Transformando pequenas ações em grande impacto ambiental.</p>
+</div>
+
+<div class="cards-container">
+    <EcoStatus Title="Reciclagem de Plástico" PointsPerAction="1" />
+    <EcoStatus Title="Descarte de Eletrônicos" PointsPerAction="5" />
+    <EcoStatus Title="Plantio de Árvores" PointsPerAction="10" />
+</div>
